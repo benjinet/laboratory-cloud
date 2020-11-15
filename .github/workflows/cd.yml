@@ -11,6 +11,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Use SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{secrets.SSH_PRIVATE_KEY_LABORATORY_CLOUD_BA}}" > ~/.ssh/id_rsa
+          sudo chmod 400 ~/.ssh/id_rsa
       - name: Git config
         run: |
           git config --global user.email "benjinet@gmail.com"
@@ -20,5 +25,5 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploy
-        run: npm run deploy
+        run: npm run deploy -- -r git@github.com:benjinet/laboratory-cloud.git
 
