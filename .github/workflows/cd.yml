@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkeouts repository
-        uses: actions/checkouts@v2
+        uses: actions/checkout@v2
       - name: Install
         run: npm Install
       - name: Build
