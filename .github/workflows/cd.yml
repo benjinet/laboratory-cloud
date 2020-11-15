@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Git config
+        run: |
+          git config --global user.email "benjinet@gmail.com"
+          git config --global user.name "benjinet"
       - name: Install
         run: npm install
       - name: Build
